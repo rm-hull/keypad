@@ -12,6 +12,11 @@ will be sent to the handler as they occur.
 
 See `piano.py` for example usage
 
+## TODO
+
+* Software debounce: http://dduino.blogspot.co.uk/2012/03/arduino-button-debouncing.html
+* Input queue / threading / locking
+
 ## License
 
 ### The MIT License (MIT)
