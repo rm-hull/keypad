@@ -54,6 +54,7 @@ class matrix(observable):
     def update(self):
 
         self.stop = False
+        prev = []
 
         while not self.stop:
 
@@ -87,9 +88,10 @@ class matrix(observable):
                     # Deactivate the specific column
                     GPIO.output(j, GPIO.HIGH)
 
-                # Notify event listeners
-                if any(self._keystate):
-                    self._broadcast(self)
+            # Notify event listeners
+            if self._keystate != prev:
+                self._broadcast(self)
+                prev = list(self._keystate)
 
             else:
                 time.sleep(self._sleep_millis / 1000.0)
