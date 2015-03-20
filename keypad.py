@@ -10,9 +10,7 @@ from RPi import GPIO
 class observable(object):
 
     def __init__(self):
-
         self._listeners = []
-
 
     def register(self, listener):
         self._listeners.append(listener)
@@ -22,7 +20,7 @@ class observable(object):
 
     def _broadcast(self, event):
         for listener in self._listeners:
-            listener.handle_event(event)
+            listener(event)
 
 
 class matrix(observable):
@@ -91,10 +89,10 @@ class matrix(observable):
 
                 # Notify event listeners
                 if any(self._keystate):
-                    for listener in self._listeners:
-                        listener(self)
+                    self._broadcast(self)
 
-            time.sleep(self._sleep_millis / 1000.0)
+            else:
+                time.sleep(self._sleep_millis / 1000.0)
 
     def keys_pressed(self):
         """
