@@ -19,7 +19,7 @@ See `piano.py` for example usage
 
 ## License
 
-### The MIT License (MIT)
+The MIT License (MIT)
 
 Copyright (c) 2015 Richard Hull
 
